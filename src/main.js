@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 
-import "./fonts.scss";
-import "./style.scss";
+import './scss/index.scss';
 
 import App from "./App.vue";
 

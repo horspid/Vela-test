@@ -6,4 +6,7 @@ import Header from "./components/Header.vue";
   <Header />
 </template>
 
-<style scoped></style>
+<style lang="scss">
+
+
+</style>
