@@ -1,0 +1,105 @@
+<script setup lang="js">
+import Container from "../../../layouts/Container.vue";
+</script>
+
+<template>
+  <div class="contact-header">
+    <Container>
+      <div class="contact-header__content">
+        <div class="contact-geo">
+          <div class="contact-geo__item">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M8.05329 15C9.01182 13.926 13.3499 8.91748 13.3499 6.29663C13.3499 3.37134 10.9786 1 8.05329 1C5.12817 1 2.75666 3.37134 2.75666 6.29663C2.75666 8.91748 7.09492 13.926 8.05329 15ZM8.05329 4.02664C9.30702 4.02664 10.3233 5.0429 10.3233 6.29663C10.3233 7.55035 9.30702 8.56661 8.05329 8.56661C6.79957 8.56661 5.78331 7.55035 5.78331 6.29663C5.78466 5.04353 6.8002 4.028 8.05329 4.02664Z"
+                  fill="#343A3F"
+                />
+              </g>
+            </svg>
+            <p class="contaсt-geo__name">Сайлент-Хилл</p>
+          </div>
+          <div class="contact-geo__item">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.3364 1.34649H5.6638C5.44518 1.34586 5.2286 1.38845 5.0265 1.47182C4.8244 1.55519 4.64078 1.67769 4.48619 1.83228C4.33161 1.98687 4.20911 2.17049 4.12574 2.37259C4.04237 2.57469 3.99977 2.79127 4.0004 3.00989V12.9903C4.0004 13.9127 4.75649 14.6537 5.6638 14.6537H10.3364C10.5551 14.6543 10.7716 14.6117 10.9737 14.5283C11.1758 14.445 11.3595 14.3225 11.514 14.1679C11.6686 14.0133 11.7911 13.8297 11.8745 13.6276C11.9579 13.4255 12.0005 13.2089 11.9998 12.9903V3.00989C12.0005 2.79127 11.9579 2.57469 11.8745 2.37259C11.7911 2.17049 11.6686 1.98687 11.514 1.83228C11.3595 1.67769 11.1758 1.55519 10.9737 1.47182C10.7716 1.38845 10.5551 1.34586 10.3364 1.34649ZM8.00768 13.58C7.58427 13.58 7.25159 13.2474 7.25159 12.8239C7.25159 12.4005 7.58427 12.0679 8.00768 12.0679C8.43109 12.0679 8.76377 12.4005 8.76377 12.8239C8.76377 13.2474 8.43109 13.58 8.00768 13.58ZM11.2437 11.2664H4.75649V3.5694H11.2437V11.2664Z"
+                fill="#343A3F"
+                fill-opacity="0.5"
+              />
+            </svg>
+            <p>+7 555 555-37-50</p>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <p>Ежедневно</p>
+          <p>9:00 — 21:00</p>
+        </div>
+        <ul class="contact-links">
+          <li><a href="">Доставка</a></li>
+          <li><a href="">Оплата</a></li>
+          <li><a href="">Контакты</a></li>
+        </ul>
+      </div>
+    </Container>
+  </div>
+</template>
+
+<style lang="scss">
+.contact-header {
+  padding: 7px 0;
+  background-color: $color-gray;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: $color-black;
+    font-size: 14px;
+  }
+}
+
+.contact-geo {
+  display: flex;
+  gap: 12px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.contact-hours {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  list-style-type: none;
+
+  a {
+    text-decoration: none;
+    color: $color-black;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+</style>
