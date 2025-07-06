@@ -1,18 +1,30 @@
-<script setup>
-defineProps({
+<script setup lang="js">
+import { ref } from 'vue';
+import LinkNavMenu from '@/widgets/Header/ui/LinkNavMenu.vue';
+
+const props = defineProps({
   name: String,
-  Icon: {
-    type: Object,
-  },
+  Icon: Object,
+  items: {
+    type: Array,
+    default: () => []
+  }
 });
+
+const isMenuOpen = ref(false);
+const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value; };
 </script>
 
 <template>
-  <a href="#" class="header__link">
-    <component :is="Icon" />
-    <p>{{ name }}</p>
-  </a>
+  <div class="header-link-wrapper" style="position: relative">
+    <a href="#" class="header__link" @click.prevent="toggleMenu">
+      <component :is="Icon" />
+      <p>{{ name }}</p>
+    </a>
+    <LinkNavMenu v-if="isMenuOpen && items && items.length" :items="items" />
+  </div>
 </template>
+
 <style scoped lang="scss">
 .header__link {
   border-radius: 0.375rem;
