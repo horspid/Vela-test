@@ -1,7 +1,10 @@
-<script setup></script>
+<script setup>
+import { defineEmits } from 'vue';
+const emit = defineEmits(['open-popup']);
+</script>
 
 <template>
-  <button class="btn-filters">
+  <button class="btn-filters" @click="emit('open-popup')">
     <svg
       width="41"
       height="16"

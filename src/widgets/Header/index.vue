@@ -7,6 +7,29 @@ import Container from "../../layouts/Container.vue";
 import LanguageSwitcher from "./ui/LanguageSwitcher.vue";
 import LinksPages from "./ui/LinksPages.vue";
 import ListLinks from './ui/ListLinks.vue';
+
+import Phone from '@/assets/phone.svg?component';
+import Laptop from '@/assets/laptop.svg?component';
+import Tv from '@/assets/tv.svg?component';
+import Speaker from '@/assets/speaker.svg?component';
+import Fire from '@/assets/fire.svg?component';
+import New from '@/assets/new.svg?component';
+
+import { ref } from 'vue';
+import Popup from '@/widgets/Popup/index.vue';
+
+const isPopupOpen = ref(false);
+const changePopup = () => { isPopupOpen.value = !isPopupOpen.value; };
+
+
+const popupItems = [
+  { Icon: Phone, title: 'Смартфоны и гаджеты'},
+  { Icon: Laptop, title: 'Ноутбуки и компьютеры'},
+  { Icon: Tv, title: 'Телевизоры и цифровое ТВ'},
+  { Icon: Speaker, title: 'Аудиотехника'},
+  { Icon: Fire, title: 'Акции'},
+  { Icon: New, title: 'Новинки'},
+]
 </script>
 
 <template>
@@ -34,9 +57,13 @@ import ListLinks from './ui/ListLinks.vue';
           <div class="header__content">
             <div class="header__logic">
               <div class="header__block">
-                <ButtonFilters />
+                <ButtonFilters @open-popup="changePopup" />
                 <ButtonSearch class="header__search" />
                 <SocialButtons />
+                <Popup
+                  v-if="isPopupOpen"
+                  :items="popupItems"
+                />
               </div>
               <LanguageSwitcher />
               <LinksPages />
@@ -78,6 +105,7 @@ import ListLinks from './ui/ListLinks.vue';
 .header {
   padding-top: 1rem;
   padding-bottom: 1.5rem;
+  position: relative;
   &__content {
     width: 100%;
   }
