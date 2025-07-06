@@ -1,4 +1,5 @@
 <script setup lang="js">
+
 import ButtonFilters from "./ui/ButtonFilters.vue";
 import ButtonSearch from "../../shared/ButtonSearch.vue";
 import ContactHeader from "./ui/ContactHeader.vue";
@@ -14,21 +15,85 @@ import Tv from '@/assets/tv.svg?component';
 import Speaker from '@/assets/speaker.svg?component';
 import Fire from '@/assets/fire.svg?component';
 import New from '@/assets/new.svg?component';
+import People from '@/assets/people.svg?component';
+import Computer from '@/assets/computer.svg?component';
+import Reshot from '@/assets/reshot.svg?component'
 
 import { ref } from 'vue';
+
 import Popup from '@/widgets/Popup/index.vue';
+import ButtonComputer from "./ui/ButtonComputer.vue";
 
-const isPopupOpen = ref(false);
-const changePopup = () => { isPopupOpen.value = !isPopupOpen.value; };
+const isFilterPopupOpen = ref(false);
+const isComputerPopupOpen = ref(false);
 
+const changeFilterPopup = () => { isFilterPopupOpen.value = !isFilterPopupOpen.value; };
+const changeComputerPopup = () => { isComputerPopupOpen.value = !isComputerPopupOpen.value; };
 
-const popupItems = [
-  { Icon: Phone, title: 'Смартфоны и гаджеты'},
-  { Icon: Laptop, title: 'Ноутбуки и компьютеры'},
-  { Icon: Tv, title: 'Телевизоры и цифровое ТВ'},
-  { Icon: Speaker, title: 'Аудиотехника'},
-  { Icon: Fire, title: 'Акции'},
-  { Icon: New, title: 'Новинки'},
+const popupItemsFilters = [
+  {
+    Icon: Phone,
+    title: 'Смартфоны и гаджеты',
+    categories: [
+      {
+        title: 'Смартфоны',
+        count: 0,
+        items: [
+            { name: 'Apple iPhone', count: 123 },
+            { name: 'Смартфоны', count: 227 },
+            { name: 'iPhone 16', count: 120 },
+            { name: 'Складные', count: 30 },
+            { name: 'realme', count: 120 },
+            { name: 'Huawei Mate X6', count: 100 },
+            { name: 'Кнопочные', count: 23 },
+            { name: 'Домашние', count: 17 },
+            { name: 'Samsung', count: 27 },
+        ]
+      },
+      {
+        title: 'Гаджеты',
+        count: 0,
+        items: [
+            { name: 'Смарт-часы', count: 15 },
+            { name: 'Смарт-кольца', count: 34 },
+            { name: 'Наушники', count: 21 },
+            { name: 'Гарнитуры', count: 12 },
+            { name: 'Портативное аудио', count: 42 },
+            { name: 'Умные гаджеты', count: 46 },
+            { name: 'Очки VR', count: 49 },
+            { name: 'Для блогеров', count: 32 },
+        ]
+      }
+    ]
+  },
+  { Icon: Laptop, title: 'Ноутбуки и компьютеры', count: 0,},
+  { Icon: Tv, title: 'Телевизоры и цифровое ТВ', count: 0},
+  { Icon: Speaker, title: 'Аудиотехника', count: 0},
+  { Icon: Fire, title: 'Акции', count: 0},
+  { Icon: New, title: 'Новинки', count: 0},
+]
+
+const popupItemsComputer = [
+  {
+    Icon: People,
+    title: 'Кому',
+    categories: [
+      {
+        title: 'Кому',
+        count: 0,
+        items: [
+            { name: 'Для мужчин', count: 123, items: [] },
+            { name: 'Для женщин', count: 63, items: [] },
+            { name: 'Папе', count: 120, items: [] },
+            { name: 'Сотрудникам', count: 30, items: [] },
+            { name: 'Мужу', count: 120, items: [] },
+            { name: 'Корпоративный', count: 100, items: [] },
+        ]
+      }
+    ]
+  },
+  { Icon: Reshot, title: 'Повод', categories: []},
+  { Icon: Computer, title: 'Наполнение', categories: [] },
 ]
 </script>
 
@@ -57,12 +122,12 @@ const popupItems = [
           <div class="header__content">
             <div class="header__logic">
               <div class="header__block">
-                <ButtonFilters @open-popup="changePopup" />
+                <ButtonFilters @open-popup="changeFilterPopup" />
                 <ButtonSearch class="header__search" />
                 <SocialButtons />
                 <Popup
-                  v-if="isPopupOpen"
-                  :items="popupItems"
+                  v-if="isFilterPopupOpen"
+                  :popupItems="popupItemsFilters"
                 />
               </div>
               <LanguageSwitcher />
@@ -70,29 +135,11 @@ const popupItems = [
             </div>
             <div class="header__links">
               <ListLinks />
-              <button class="user-func__btn">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 3.33333V12.6667"
-                    stroke="#4888FF"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M3.33337 8H12.6667"
-                    stroke="#4888FF"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p>Собрать компьютер</p>
-              </button>
+              <ButtonComputer @open-popup="changeComputerPopup" />
+              <Popup
+                v-if="isComputerPopupOpen"
+                :popupItems="popupItemsComputer"
+              />
             </div>
           </div>
         </div>
@@ -131,32 +178,6 @@ const popupItems = [
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-  }
-}
-
-.user-func {
-  &__btn {
-    cursor: pointer;
-    font-family: "Maza", sans-serif;
-    width: 176px;
-    border-radius: 0.375rem;
-    height: 2.625rem;
-    color: $color-blue;
-    display: flex;
-    gap: 7px;
-    align-items: center;
-    justify-content: center;
-    background-color: $color-gray;
-    border: none;
-
-    &:hover {
-      color: $color-gray;
-      background-color: $color-blue;
-
-      svg * {
-        stroke: $color-gray;
-      }
-    }
   }
 }
 </style>
