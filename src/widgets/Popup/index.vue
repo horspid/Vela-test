@@ -82,6 +82,8 @@ const selectCategory = idx => {
   &__category {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
   &__content {
     display: flex;
@@ -113,6 +115,12 @@ const selectCategory = idx => {
         stroke-width: 2px;
       }
     }
+  }
+
+  &__arrow {
+    margin-left: auto;
+    flex-shrink: 0; // чтобы не сжималась
+    display: block;
   }
 
   &__arrow path {
