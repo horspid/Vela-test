@@ -26,7 +26,6 @@
 <style scoped lang="scss">
 .lang-switcher {
   font-size: 1rem;
-  display: flex;
   align-items: center;
 
   &__langs {
@@ -45,6 +44,13 @@
     width: 1px;
     background-color: $color-black;
     height: 1rem;
+  }
+
+  @media (width <= 80rem) {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 </style>

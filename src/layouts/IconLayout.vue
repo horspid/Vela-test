@@ -14,5 +14,10 @@
   justify-content: center;
   display: flex;
   align-items: center;
+
+  @media (width <= 80rem) {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 </style>

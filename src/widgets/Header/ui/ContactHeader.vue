@@ -1,13 +1,15 @@
 <script setup lang="js">
 import Container from "../../../layouts/Container.vue";
+import LanguageSwitcher from './LanguageSwitcher.vue'
 </script>
 
 <template>
   <div class="contact-header">
     <Container>
       <div class="contact-header__content">
+        <LanguageSwitcher class="contact-lang" />
         <div class="contact-geo">
-          <div class="contact-geo__item">
+          <div class="contact-geo__item contact-geo__location">
             <svg
               width="16"
               height="16"
@@ -57,8 +59,13 @@ import Container from "../../../layouts/Container.vue";
 
 <style lang="scss">
 .contact-header {
+  display: block;
   padding: 7px 0;
   background-color: $color-gray;
+
+  @media (width <= 80rem) {
+    margin-bottom: 0.625rem;
+  }
 
   &__content {
     display: flex;
@@ -79,12 +86,22 @@ import Container from "../../../layouts/Container.vue";
     align-items: center;
     gap: 5px;
   }
+
+  @media (width <= 80rem) {
+    &__location {
+      display: none;
+    }
+  }
 }
 
 .contact-hours {
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (width < 80rem) {
+    display: none;
+  }
 }
 
 .contact-links {
@@ -100,6 +117,18 @@ import Container from "../../../layouts/Container.vue";
     &:hover {
       color: $color-blue;
     }
+  }
+
+  @media (width <= 80rem) {
+    display: none;
+  }
+}
+
+.contact-lang {
+  display: none;
+
+  @media (width <= 80rem) {
+    display: flex;
   }
 }
 </style>

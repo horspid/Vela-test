@@ -1,6 +1,6 @@
 <script setup>
-import { defineEmits } from 'vue';
-const emit = defineEmits(['open-popup']);
+import { defineEmits } from "vue";
+const emit = defineEmits(["open-popup"]);
 </script>
 
 <template>
@@ -28,5 +28,20 @@ const emit = defineEmits(['open-popup']);
   outline: none;
   border-radius: 0.5rem;
   border: none;
+
+  @media (width <= 80rem) {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    & {
+      border-radius: 0.25rem;
+    }
+
+    svg {
+      width: 27.5px;
+      height: 15px;
+    }
+  }
 }
 </style>

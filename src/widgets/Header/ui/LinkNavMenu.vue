@@ -1,4 +1,5 @@
 <script setup lang="js">
+
 defineProps({
   items: {
     type: Array,
@@ -17,6 +18,7 @@ defineProps({
 
 <style lang="scss">
 .link-menu {
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   padding: 1.5rem 4.375rem 1.5rem 1.5rem;
