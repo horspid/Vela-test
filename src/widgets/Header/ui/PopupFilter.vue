@@ -5,6 +5,10 @@ defineProps({
     type: Array,
     required: true,
   },
+    isMobile: {
+    type: Boolean,
+    required: false,
+  }
 });
 
 import { defineEmits } from 'vue';
@@ -14,6 +18,7 @@ const emit = defineEmits(['open-popup']);
 <template>
   <div
     class="popup-filter"
+    v-if="!isMobile"
     v-for="category in categories"
     :key="category.title"
   >
@@ -43,6 +48,14 @@ const emit = defineEmits(['open-popup']);
         />
       </svg>
     </div>
+  </div>
+  <div
+    class="popup-filter"
+    v-if="isMobile"
+    v-for="category in categories"
+    :key="category.title"
+  >
+    <h3>{{ category.title }}</h3>
   </div>
 </template>
 

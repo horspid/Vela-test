@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="link-menu">
+  <section class="link-menu link-menu__mobile">
     <div class="link-menu__item" v-for="item in items" :key="item.name">
       <a href="#" class="link-menu__name">{{ item.name }}</a>
     </div>
@@ -31,6 +31,9 @@ defineProps({
   box-shadow: 0px 0px 10px 0px rgba(157, 157, 157, 35%);
   z-index: 1000;
 
+  &__mobile {
+    display: none;
+  }
   &__name {
     color: $color-black;
     text-decoration: none;

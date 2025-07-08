@@ -1,14 +1,19 @@
 <script setup lang="js">
 import { ref } from 'vue';
 import LinkNavMenu from '@/widgets/Header/ui/LinkNavMenu.vue';
+const emit = defineEmits(["open-popup"]);
 
 const props = defineProps({
   name: String,
-  Icon: Object,
+  Icon: {
+    type: Object,
+    required: false,
+  },
   items: {
     type: Array,
     default: () => []
-  }
+  },
+
 });
 
 const isMenuOpen = ref(false);
@@ -17,7 +22,11 @@ const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value; };
 
 <template>
   <div class="header-link-wrapper" style="position: relative">
-    <a href="#" class="header__link" @click.prevent="toggleMenu">
+    <a
+      href="#"
+      class="header__link header__link-mobile"
+      @click.prevent="toggleMenu"
+    >
       <component :is="Icon" />
       <p>{{ name }}</p>
     </a>
@@ -38,6 +47,11 @@ const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value; };
   align-items: center;
   gap: 0.625rem;
   cursor: pointer;
+
+  &-mobile {
+    width: inherit;
+    height: 3rem;
+  }
 
   svg * {
     fill: $color-blue;

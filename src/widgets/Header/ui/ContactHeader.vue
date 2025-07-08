@@ -1,5 +1,6 @@
 <script setup lang="js">
 import Container from "../../../layouts/Container.vue";
+import Geolocation from "./Geolocation.vue";
 import LanguageSwitcher from './LanguageSwitcher.vue'
 </script>
 
@@ -9,23 +10,7 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
       <div class="contact-header__content">
         <LanguageSwitcher class="contact-lang" />
         <div class="contact-geo">
-          <div class="contact-geo__item contact-geo__location">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M8.05329 15C9.01182 13.926 13.3499 8.91748 13.3499 6.29663C13.3499 3.37134 10.9786 1 8.05329 1C5.12817 1 2.75666 3.37134 2.75666 6.29663C2.75666 8.91748 7.09492 13.926 8.05329 15ZM8.05329 4.02664C9.30702 4.02664 10.3233 5.0429 10.3233 6.29663C10.3233 7.55035 9.30702 8.56661 8.05329 8.56661C6.79957 8.56661 5.78331 7.55035 5.78331 6.29663C5.78466 5.04353 6.8002 4.028 8.05329 4.02664Z"
-                  fill="#343A3F"
-                />
-              </g>
-            </svg>
-            <p class="contaсt-geo__name">Сайлент-Хилл</p>
-          </div>
+          <Geolocation />
           <div class="contact-geo__item">
             <svg
               width="16"
@@ -57,7 +42,7 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .contact-header {
   display: block;
   padding: 7px 0;

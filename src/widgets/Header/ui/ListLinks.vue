@@ -25,8 +25,8 @@ const linkItems = [
 
 <template>
   <div class="header-links">
-    <HeaderLink 
-      v-for="item in linkItems" 
+    <HeaderLink
+      v-for="item in linkItems"
       :key="item.name"
       :name="item.name"
       :Icon="item.icon"
@@ -37,9 +37,16 @@ const linkItems = [
 
 <style scoped lang="scss">
 .header-links {
+  overflow: hidden;
   max-width: 901px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media (width <=80rem) {
+    & {
+      max-width: unset;
+    }
+  }
 }
 </style>

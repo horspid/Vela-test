@@ -4,15 +4,40 @@ import IconOutlinedLayout from '../../../layouts/IconOutlinedLayout.vue';
 import ButtonFilters from './ButtonFilters.vue';
 import Container from '@/layouts/Container.vue';
 import ButtonSearch from '@/shared/ButtonSearch.vue'
+import { ref } from 'vue';
+import MobilePopupFilter from './MobilePopupFilter.vue';
+
+const isFilterPopupOpen = ref(false);
 
 const changeFilterPopup = () => { isFilterPopupOpen.value = !isFilterPopupOpen.value; };
+const closeFilterPopup = () => { isFilterPopupOpen.value = false; };
+
+defineProps( {
+  itemsFilters: {
+    type: Array,
+    default: () => []
+  },
+  computerFilters: {
+     type: Array,
+     default: () => []
+  }
+})
 </script>
 <template>
   <section class="mobile-header">
+    <MobilePopupFilter
+      v-if="isFilterPopupOpen"
+      :popupItemsFilters="itemsFilters"
+      @close="closeFilterPopup"
+    />
     <Container>
       <div class="mobile-header__wrapper">
         <div class="mobile-header__buttons">
-          <ButtonFilters @open-popup="changeFilterPopup" />
+          <ButtonFilters
+            @open-popup="changeFilterPopup"
+            :is-open="isFilterPopupOpen"
+            links=""
+          />
           <IconOutlinedLayout>
             <svg
               width="24"
