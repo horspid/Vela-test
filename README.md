@@ -1,5 +1,20 @@
-# Vue 3 + Vite
+# Тестовое задание от Vela
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Для того, чтобы запустить проект, необходимо в командной строке ввести следующие команды:
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+```console
+npm i
+npm run dev
+```
+
+## Примечания к тз
+
+* Тестовое задание делал с использование BEM + VUE + SCSS, в качестве сборщика выбрал Vite.
+* Пиксель перфект не стал делать, но сделал +- как по макету из Figma.
+* В связи с отсутствием шрифта - Maza, (я не нашел его в интернете), использовал другой, чтобы его поменять необходимо его установить в соотвествтующую директорию и переопределить в scss.
+* Из-за слишком уж разных стилей на мобильной и дескоптной версиях - решил сделал отдельный header для мобильных устройств.
+* Макет адаптивен до 320 пикселей
+
+## Лайв версию проекта можно посмотреть тут:
+
+https://vela-test-five.vercel.app/
