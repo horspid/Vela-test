@@ -30,9 +30,14 @@ import Container from '../../layouts/Container.vue';
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right center;
-
   font-family: "Tenor", sans-serif;
   color: $color-gray;
+
+  @media (width <= 80rem) {
+    & {
+      background-position: center center;
+    }
+  }
 
   &__info {
     padding-top: 2rem;
